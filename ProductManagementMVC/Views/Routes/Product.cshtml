@@ -1,0 +1,112 @@
+﻿<div class="container">
+    <table class="table table-bordered">
+        <tr>
+            <td align="right">Search :</td>
+            <td><input ng-model="query[queryBy]" /></td>
+        </tr>
+        <tr>
+            <td align="right">Search By :</td>
+            <td>
+                <select ng-model="queryBy">
+                    <option value="$">-</option>
+                    <option value="Id">Id</option>
+                    <option value="ProductName">Name</option>
+                    <option value="Price">Price</option>
+                    <option value="Stock">Stock</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th>Id</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Stock</th>
+
+            <th>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal2">Add</button>
+            </th>
+        </tr>
+        <tr ng-repeat="p in record | filter:query">
+            <td>{{p.Id}}</td>
+            <td>{{p.ProductName}}</td>
+            <td>{{p.Price}}</td>
+            <td>{{p.Stock}}</td>
+            <td>
+                <p>
+                    <button type="button" class="btn btn-primary" ng-click="loadrecord(p.Id)" data-toggle="modal" data-target="#myModal">Update</button>
+                    <button type="button" class="btn btn-danger" ng-click="deleterecord(p.Id)">Delete</button>
+                </p>
+            </td>
+        </tr>
+    </table>
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Update Product</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        <div class="form-group">
+                            <label>Product Name</label>
+                            <input type="text" ng-model="register.ProductName" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Price</label>
+                            <input type="text" ng-model="register.Price" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Stock</label>
+                            <input type="text" ng-model="register.Stock" class="form-control">
+                        </div>
+                        <button class="btn btn-primary" ng-click="updatedata()"  data-dismiss="modal" value="{{btntext}}">Update</button>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal2" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add Product</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        <div class="form-group">
+                            <label>Product Name</label>
+                            <input type="text" ng-model="register.ProductName" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Price</label>
+                            <input type="text" ng-model="register.Price" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Stock</label>
+                            <input type="text" ng-model="register.Stock" class="form-control">
+                        </div>
+                        <button class="btn btn-primary" ng-click="savedata()" data-dismiss="modal" value="{{btntext}}">Add</button>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
